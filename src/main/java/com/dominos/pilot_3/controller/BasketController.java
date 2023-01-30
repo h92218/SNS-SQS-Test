@@ -22,7 +22,7 @@ public class BasketController {
     @RequestMapping(value = "/basket/updateBasket")
     @ResponseBody
     public void updateBasket(){
-
+        update1111
     }
 
 

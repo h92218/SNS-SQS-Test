@@ -1,39 +1,34 @@
 package com.dominos.pilot_3.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-public class BasketController {
 
-    /*
-    로그인 사용자
-    최초 장바구니 생성
-    */
-    @RequestMapping(value = "/basket/insertBasket")
+@Controller
+public class BasketController {
+    //로그인 사용자 장바구니 처리
+
+
+
+    //사용자 바구니 redis에 만들기
+    @RequestMapping(value = "/basket/createBasket")
     @ResponseBody
-    public void insertBasket(){
-        test11
+    public void createBasket(){
+
     }
 
 
     /*
-    장바구니 update
+    장바구니 내용 update
     */
     @RequestMapping(value = "/basket/updateBasket")
     @ResponseBody
     public void updateBasket(){
-        update1111
-    }
-
-
-    /*
-    미로그인 사용자 장바구니 delete
-    */
-    @RequestMapping(value = "/basket/updateBasket")
-    @ResponseBody
-    public void deleteBasket(){
 
     }
+
+
 
     /*
     * 장바구니 조회
@@ -41,6 +36,16 @@ public class BasketController {
     @RequestMapping(value = "/basket/getBasket")
     @ResponseBody
     public void getBasket(){
+
+    }
+
+
+    /*
+    구매 완료시에 장바구니 DB에 insert
+    */
+    @RequestMapping(value = "/basket/insertBasket")
+    @ResponseBody
+    public void insertBasket(){
 
     }
 }

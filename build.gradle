@@ -19,9 +19,15 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre' // ImmutableMap.of 사용을 위한 dependencies
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" // Spring Boot COnfiguration Annotation Processor not configured 방지용
+
+
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'

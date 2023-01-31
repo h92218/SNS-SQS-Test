@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    postgresqlreadonly:
+      jdbc-url: jdbc:postgresql://70.25.26.162:5432/dominos
+      maximum-pool-size: 4
+      username: dominos
+      password: ehalsh!@#123
+      driver-class-name: org.postgresql.Driver
+    postgresqlreadwrite:
+      jdbc-url: jdbc:postgresql://70.25.26.161:5432/dominos
+      maximum-pool-size: 4
+      username: dominos
+      password: ehalsh!@#123
+      driver-class-name: org.postgresql.Driver
+
+
+  data:
+   redis:
+     cluster:
+       nodes:
+         - 70.25.26.161:6379
+         - 70.25.26.161:6380
+         - 70.25.26.162:6379
+         - 70.25.26.162:6380
+         - 70.25.26.163:6379
+         - 70.25.26.163:6380
+     password: ehalsh!@#123
+
+
+

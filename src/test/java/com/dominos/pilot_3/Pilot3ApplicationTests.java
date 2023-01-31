@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class Pilot3ApplicationTests {
 
     @Test
-    void contextLoads() {
+    void redisTest() {
+
     }
 
 }

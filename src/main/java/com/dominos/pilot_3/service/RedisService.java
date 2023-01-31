@@ -5,6 +5,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -25,6 +27,13 @@ public class RedisService {
         values.set(key,value);
     }
 
+    public void setSets(String key,String... values){
+        redisTemplate.opsForSet().add(key,values);
+    }
+
+    public Set getSets(String key){
+        return redisTemplate.opsForSet().members(key);
+    }
 
 
 }

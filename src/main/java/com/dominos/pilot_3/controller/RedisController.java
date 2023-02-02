@@ -1,45 +1,23 @@
 package com.dominos.pilot_3.controller;
 
-import com.dominos.pilot_3.service.RedisService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import com.dominos.pilot_3.domain.redis.IntegratedLog;
+import com.dominos.pilot_3.service.redis.RedisPubService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Timestamp;
-import java.util.Set;
-
-@Controller
+@RestController
+@RequiredArgsConstructor // final로 선언된 생성자 주입해주는 어노테이션
+@RequestMapping("pilot-api")
 public class RedisController {
-//레디스 테스트
+    private final RedisPubService redisPubService;
 
-    @Autowired
-    RedisService redisService;
-
-    @RequestMapping(value = "/redis/test/setString")
-    @ResponseBody
-    public void setValue(String testkey, String testvalue){
-        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-        redisService.setValues(testkey,testvalue);
+    @PostMapping(value = "/integratedLog")
+    public String pubSend(@RequestBody IntegratedLog integratedLog) {
+        // 메세지 보내기
+        redisPubService.sendMessage(integratedLog);
+        return "success";
     }
-
-    @RequestMapping(value = "/redis/test/getString")
-    @ResponseBody
-    public String getValue(String testkey){
-        return redisService.getValues(testkey);
-    }
-
-
-    @RequestMapping(value = "/redis/test/setSets")
-    @ResponseBody
-    public void setSets(String testkey,String... testvalues){
-        redisService.setSets(testkey,testvalues);
-    }
-
-    @RequestMapping(value = "/redis/test/getSets")
-    @ResponseBody
-    public Set getSets(String key){
-        return redisService.getSets(key);
-    }
-
 }

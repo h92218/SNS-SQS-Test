@@ -19,12 +19,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
-    runtimeOnly 'org.postgresql:postgresql'
-    implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre' // ImmutableMap.of 사용을 위한 dependencies
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor" // Spring Boot COnfiguration Annotation Processor not configured 방지용
-
 
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -32,6 +26,15 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation platform('software.amazon.awssdk:bom:2.15.0')
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-aws-messaging', version: '2.2.1.RELEASE'
+    implementation 'software.amazon.awssdk:sns'
+    implementation 'software.amazon.awssdk:sqs'
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
 }
 
 tasks.named('test') {

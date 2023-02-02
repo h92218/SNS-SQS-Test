@@ -2,6 +2,7 @@ package com.dominos.pilot_3.config;
 
 
 import com.dominos.pilot_3.component.RedisClusterConfigurationProperties;
+import com.dominos.pilot_3.domain.redis.IntegratedLog;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +49,17 @@ public class RedisConfig {
         redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(Object.class));
         return redisTemplate;
     }
+
+    // Log pub/sub 용 RedisTemplate 설정
+    @Bean
+    public RedisTemplate<String, IntegratedLog> integratedLogRedisTemplate() {
+        RedisTemplate<String, IntegratedLog> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(redisConnectionFactory());
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(IntegratedLog.class));
+        return redisTemplate;
+    }
+
 
 
 

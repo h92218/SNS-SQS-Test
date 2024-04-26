@@ -6,13 +6,10 @@ spring:
    redis:
      cluster:
        nodes:
-         - 70.25.26.161:6379
-         - 70.25.26.161:6380
-         - 70.25.26.162:6379
-         - 70.25.26.162:6380
-         - 70.25.26.163:6379
-         - 70.25.26.163:6380
-     password: ehalsh!@#123
+         - x.x.x.x:6379
+         - x.x.x.x:6380
+         - x.x.x.x:6379
+     password: xxxxxxxx
 
 
 cloud:
@@ -27,15 +24,15 @@ cloud:
       auto: false
 
     S3:
-      bucket: s3-dominos-public-test
+      bucket: s3-test-public-test
 
     sns:
       topic:
-        arn: arn:aws:sns:ap-northeast-1:985883263647:MyTopic2
+        arn: arn:aws:sns:ap-northeast-1:11111111:MyTopic2
 
     sqs:
       queue:
         name: MyQueue2
-        url: https://sqs.ap-northeast-1.amazonaws.com/985883263647/MyQueue2
+        url: https://sqs.ap-northeast-1.amazonaws.com/11111111/MyQueue2
 
 
